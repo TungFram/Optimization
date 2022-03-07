@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\wolka\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\wolka\\.nuget\\packages"
+    ]
+  }
+}

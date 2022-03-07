@@ -1,0 +1,16 @@
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\Optimization.exe
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\Optimization.deps.json
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\Optimization.runtimeconfig.json
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\Optimization.runtimeconfig.dev.json
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\Optimization.dll
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\ref\Optimization.dll
+C:\Users\wolka\RiderProjects\Optimization\Optimization\bin\Debug\net5.0\Optimization.pdb
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.csproj.AssemblyReference.cache
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.AssemblyInfoInputs.cache
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.AssemblyInfo.cs
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.csproj.CoreCompileInputs.cache
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.dll
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\ref\Optimization.dll
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.pdb
+C:\Users\wolka\RiderProjects\Optimization\Optimization\obj\Debug\net5.0\Optimization.genruntimeconfig.cache
