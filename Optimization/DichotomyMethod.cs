@@ -2,48 +2,45 @@
 
 namespace Optimization
 {
-    public class DichotomyMethod //TODO: Почему на одну итерацию больше чем нужно
+    public class DichotomyMethod
     {
-        private double xmin;
         private readonly Function _function;
         public DichotomyMethod()
         {
             _function = new Function();
         }
 
-        public double Min(double left, double right, double exactitude)
+        public PointAndValue Min(double left, double right, double exactitude = 0.001)
         {
+            int iterAmount = 0;
             while (true)
             {
-                xmin = 0;
-                double leftSide = (left + right) / 2 - exactitude;
-                double rightSide = (left + right) / 2 + exactitude;
+                iterAmount++;
+                double leftBorder = (left + right) / 2 - exactitude;
+                double rightBorder = (left + right) / 2 + exactitude;
 
-                double functionLeftSide = _function.CalculateFunction(leftSide);
-                double functionRightSide = _function.CalculateFunction(rightSide);
+                double functionLeftBorder = _function.CalculateFunction(leftBorder);
+                double functionRightBorder = _function.CalculateFunction(rightBorder);
 
-                if (Math.Abs(right - left) > exactitude)
+                Console.WriteLine($"Iteration: {iterAmount}, current interval: [{left},{right}]," +
+                                  $" x min:{(right + left) / 2}, amount of function calls: {_function.AmountFunctionCalls}");
+
+                // Если дошли до нужной точности, возвращается середина между границами.
+                if (!(Math.Abs(right - left) > exactitude))
                 {
-                    if (functionLeftSide > functionRightSide)
-                    {
-                        left = leftSide;
-                        continue;
-                    }
-
-                    if (functionLeftSide < functionRightSide)
-                    {
-                        right = rightSide;
-                        continue;
-                    }
-
-                    left = leftSide;
-                    right = rightSide;
-                    Console.WriteLine("Interation: " + iterAmount + ", Current interval: (" + left + ", " + right + ")" + ", xmin: " + ((right + left) / 2) + ", Current amount of func calculations: " + _function.AmountFunctionCalls);
+                    var finalPoint = (left + right) / 2;
+                    return new PointAndValue(finalPoint, _function.CalculateFunction(finalPoint));
                 }
 
-                xmin = (left + right) / 2;
-                return xmin;
-                break;
+                // Если функция от левой границы окрестности больше, отсекаем часть от исходной левой границы до окрестности.
+                if (functionLeftBorder > functionRightBorder) 
+                {
+                    left = leftBorder;
+                    continue;
+                }
+
+                // Если функция от правой границы окрестности больше, отсекаем часть от окрестности до исходной правой границы.
+                right = rightBorder;
             }
         }
     }

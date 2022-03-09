@@ -21,8 +21,8 @@ namespace Optimization
             //Golden method
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Golden Ratio Method: ");
-            GoldenRatioFunction goldenRatioFunction = new GoldenRatioFunction();
-            xmin = goldenRatioFunction.calc(epsilon, left, right);
+            GoldenRatioMethod goldenRatioMethod = new GoldenRatioMethod();
+            xmin = goldenRatioMethod.Min(epsilon, left, right);
             Console.WriteLine(xmin + ", yval: " + f(xmin));
             
             //Fibonnachi method
