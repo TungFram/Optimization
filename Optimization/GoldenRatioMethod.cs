@@ -7,7 +7,7 @@ namespace Optimization
         // пропорция золотого сечения
         private readonly double _proportion = (1 + Math.Sqrt(5)) / 2;
         private readonly Function _function;
-        private double _iterCount;
+        private int _iterCount;
 
         public GoldenRatioMethod()
         {

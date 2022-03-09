@@ -5,48 +5,53 @@ namespace Optimization
 {
     public class FibonacciFunction
     {
-    public double calc(double a, double b, double eps)
-    {
-        amountOfFuncComputation = 0;
-        double previousLenght = b - a;
-        List<int> fibonacciSeries = new List<int>{1, 1};
-        while(true)
+        private readonly Function _function;
+        private int _iterCount;
+        public FibonacciFunction()
         {
-            int newItem = fibonacciSeries[^1] + fibonacciSeries[^2];
-            fibonacciSeries.Add(newItem);
-            if(newItem > Math.Abs(b - a) / eps)
-                break;
+            _function = new Function();
         }
-        int n = fibonacciSeries.Count - 1;
-        double x1 = a + ((double)fibonacciSeries[n - 2] / fibonacciSeries[n]) * (b - a);
-        double x2 = a + ((double)fibonacciSeries[n - 1] / fibonacciSeries[n]) * (b - a);
-        double fx1 = f(x1);
-        double fx2 = f(x2);
-        while(n > 2)
+        public double Min(double left, double right, double exactitude = 0.001)
         {
-            Console.WriteLine("Iteration: " + iterAmount + ", Current interval: (" + a + ", " + b + ")" + ", difference between previous interval: " + (previousLenght / Math.Abs(b - a)) + /*", xmin: " + ((a + b) / 2) + */ ", Current amount of func calculations: " + amountOfFuncComputation);
-            n--;
-            iterAmount++;
-            previousLenght = b - a;
-            if (fx1 < fx2)
+            double previousLenght = right - left;
+            List<int> fibonacciSeries = new List<int>{1, 1};
+            while(true)
             {
-                b = x2;
-                x2 = x1;
-                fx2 = fx1;
-                x1 = a + ((double)fibonacciSeries[n - 2] / fibonacciSeries[n]) * (b - a);
-                fx1 = f(x1);
+                int newItem = fibonacciSeries[^1] + fibonacciSeries[^2];
+                fibonacciSeries.Add(newItem);
+                i_function.CalculateFunction(newItem > Math.Abs(right - left) / exactitude)
+                    break;
             }
-            else
+            int n = fibonacciSeries.Count - 1;
+            double leftBorder = left + ((double)fibonacciSeries[n - 2] / fibonacciSeries[n]) * (right - left);
+            double rightBorder = left + ((double)fibonacciSeries[n - 1] / fibonacciSeries[n]) * (right - left);
+            double functionLeftBorder = _function.CalculateFunction(leftBorder);
+            double functionRightBorder = _function.CalculateFunction(rightBorder);
+            while(n > 2)
             {
-                a = x1;
-                x1 = x2;
-                fx1 = fx2;
-                x2 = a + ((double)fibonacciSeries[n - 1] / fibonacciSeries[n]) * (b - a);
-                fx2 = f(x2);
+                Console.WriteLine("Iteration: " + _iterCount + ", Current interval: (" + left + ", " + right + ")" + ", difference between previous interval: " + (previousLenght / Math.Abs(right - left)) + /*", xmin: " + ((a + b) / 2) + */ ", Current amount of func calculations: " + amountOfFuncComputation);
+                n--;
+                iterCount++;
+                previousLenght = right - left;
+                if (functionLeftBorder < functionRightBorder)
+                {
+                    right = rightBorder;
+                    rightBorder = leftBorder;
+                    functionRightBorder = functionLeftBorder;
+                    leftBorder = left + ((double)fibonacciSeries[n - 2] / fibonacciSeries[n]) * (right - left);
+                    functionLeftBorder = _function.CalculateFunction(leftBorder);
+                }
+                else
+                {
+                    left = leftBorder;
+                    leftBorder = rightBorder;
+                    functionLeftBorder = functionRightBorder;
+                    rightBorder = left + ((double)fibonacciSeries[n - 1] / fibonacciSeries[n]) * (right - left);
+                    functionRightBorder = _function.CalculateFunction(rightBorder);
+                }
+                    
             }
-                
+            return ((left + right) / 2);
         }
-        return ((a + b) / 2);
-    }
     }
 }

@@ -29,7 +29,7 @@ namespace Optimization
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Fibbonachi method: ");
             FibonacciFunction fibonacciFunction = new FibonacciFunction();
-            xmin = fibonacciFunction.calc(left, right, epsilon);
+            xmin = fibonacciFunction.Min(left, right, epsilon);
             Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + fibonacciFunction.getIterAmount() + ", amount of func calculations: " + fibonacciFunction.getAmountOfComputations());
             
             /*
