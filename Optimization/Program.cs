@@ -15,22 +15,22 @@ namespace Optimization
              //dichotomy method
              Console.WriteLine("Dichotomy method:");
              DichotomyMethod dichotomyMethod = new DichotomyMethod();
-             xmin = dichotomyMethod.calc(epsilon, left, right);
+             xmin = dichotomyMethod.Min(epsilon, left, right);
              Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + dichotomyMethod.getIterAmount() + ", amount of func calculations: " + dichotomyMethod.getAmountOfComputations());
              
             //Golden method
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Golden Ratio Method: ");
-            GoldenRatioMethod goldenRatioMethod = new GoldenRatioMethod();
-            xmin = goldenRatioMethod.calc(epsilon, left, right);
+            GoldenRatioFunction goldenRatioFunction = new GoldenRatioFunction();
+            xmin = goldenRatioFunction.calc(epsilon, left, right);
             Console.WriteLine(xmin + ", yval: " + f(xmin));
             
             //Fibonnachi method
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Fibbonachi method: ");
-            FibonacciMethod fibonacciMethod = new FibonacciMethod();
-            xmin = fibonacciMethod.calc(left, right, epsilon);
-            Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + fibonacciMethod.getIterAmount() + ", amount of func calculations: " + fibonacciMethod.getAmountOfComputations());
+            FibonacciFunction fibonacciFunction = new FibonacciFunction();
+            xmin = fibonacciFunction.calc(left, right, epsilon);
+            Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + fibonacciFunction.getIterAmount() + ", amount of func calculations: " + fibonacciFunction.getAmountOfComputations());
             
             /*
             //Parabola method
@@ -43,7 +43,7 @@ namespace Optimization
             //Brent method
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Brent Method: ");
-            BrentCombinedMethod bmethod2 = new BrentCombinedMethod();
+            BrentCombinedFunction bmethod2 = new BrentCombinedFunction();
             xmin = bmethod2.calc(left, right, epsilon);
             Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + bmethod2.getIterAmount() + ", amount of func calculations: " + bmethod2.getAmountOfComputations());
         }

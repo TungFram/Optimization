@@ -2,46 +2,49 @@
 
 namespace Optimization
 {
-    public class DichotomyMethod:Method //TODO:Почему на одну итерацию больше чем нужно
+    public class DichotomyMethod //TODO: Почему на одну итерацию больше чем нужно
     {
-        //public static int interamount;
-        public static double deltaa;
-        public static double xmin;
-        private static double previouslength;
-
+        private double xmin;
+        private readonly Function _function;
         public DichotomyMethod()
         {
-            interamount = 0;
-            amountoffunccomputation = 0;
+            _function = new Function();
         }
-        public double calc(double epsilon, double a, double b)
+
+        public double Min(double left, double right, double exactitude)
         {
-            xmin = 0;
-            while (Math.Abs(b-a) > epsilon)
+            while (true)
             {
-                interamount++;
-                double x1 = ((a + b) / 2) - epsilon/4;
-                double x2 = ((a + b) / 2) + epsilon/4;
-                double fx1 = f(x1);
-                double fx2 = f(x2);
-                previouslength = b - a;
-                if (fx1 > fx2)
+                xmin = 0;
+                double leftSide = (left + right) / 2 - exactitude;
+                double rightSide = (left + right) / 2 + exactitude;
+
+                double functionLeftSide = _function.CalculateFunction(leftSide);
+                double functionRightSide = _function.CalculateFunction(rightSide);
+
+                if (Math.Abs(right - left) > exactitude)
                 {
-                    a = x1;
+                    if (functionLeftSide > functionRightSide)
+                    {
+                        left = leftSide;
+                        continue;
+                    }
+
+                    if (functionLeftSide < functionRightSide)
+                    {
+                        right = rightSide;
+                        continue;
+                    }
+
+                    left = leftSide;
+                    right = rightSide;
+                    Console.WriteLine("Interation: " + iterAmount + ", Current interval: (" + left + ", " + right + ")" + ", xmin: " + ((right + left) / 2) + ", Current amount of func calculations: " + _function.AmountFunctionCalls);
                 }
-                else if (fx1 < fx2)
-                {
-                    b = x2;
-                }
-                else
-                {
-                    a = x1;
-                    b = x2;
-                }
-                Console.WriteLine("Interation: " + interamount + ", Current interval: (" + a + ", " + b + ")" + ", difference betweent previous interval: " + (previouslength / Math.Abs(b - a)) + ", xmin: " + ((b + a) / 2) +  ", Current amount of func calculations: " + amountoffunccomputation);
+
+                xmin = (left + right) / 2;
+                return xmin;
+                break;
             }
-            xmin = (a + b) / 2;
-            return xmin;
         }
     }
 }

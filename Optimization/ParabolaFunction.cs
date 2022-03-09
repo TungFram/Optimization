@@ -2,7 +2,7 @@
 
 namespace Optimization
 {
-    internal class ParabolaMethod : Method
+    internal class ParabolaFunction : Function
     {
         public static void Main1(string[] args)
         {

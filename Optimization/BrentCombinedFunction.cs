@@ -2,7 +2,7 @@
 
 namespace Optimization
 {
-    public class BrentCombinedMethod:Method
+    public class BrentCombinedFunction
     {
         public double calc(double a, double c, double epsilon)
         {
@@ -15,8 +15,8 @@ namespace Optimization
             //double K = (Math.Sqrt(5) - 1) / 2;
             double K = (3 - Math.Sqrt(5)) / 2;
             double u = 0;
-            interamount = 0;
-            amountoffunccomputation = 0;
+            iterAmount = 0;
+            amountOfFuncComputation = 0;
             while (Math.Abs(d) > epsilon)
             {
                 
@@ -91,8 +91,8 @@ namespace Optimization
                         fv = fu;
                     }
                 }
-                interamount++;
-                Console.WriteLine("Interation: " + interamount + ", Current interval: (" + a + ", " + c + ")" + ", xmin: " + ((c + a) / 2) +  ", Current amount of func calculations: " + amountoffunccomputation);
+                iterAmount++;
+                Console.WriteLine("Interation: " + iterAmount + ", Current interval: (" + a + ", " + c + ")" + ", xmin: " + ((c + a) / 2) +  ", Current amount of func calculations: " + amountOfFuncComputation);
             }
             return x;
         }

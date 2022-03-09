@@ -2,7 +2,7 @@
 
 namespace Optimization
 {
-    public class GoldenRatioMethod : Method
+    public class GoldenRatioFunction
     {
         private static double it_num;
         private static double funccall_num;

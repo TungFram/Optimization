@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Optimization
 {
-    public class FibonacciMethod : Method
+    public class FibonacciFunction
     {
     public double calc(double a, double b, double eps)
     {
-        amountoffunccomputation = 0;
-        double previouslength = b - a;
+        amountOfFuncComputation = 0;
+        double previousLenght = b - a;
         List<int> fibonacciSeries = new List<int>{1, 1};
         while(true)
         {
@@ -24,10 +24,10 @@ namespace Optimization
         double fx2 = f(x2);
         while(n > 2)
         {
-            Console.WriteLine("Interation: " + interamount + ", Current interval: (" + a + ", " + b + ")" + ", difference between previous interval: " + (previouslength / Math.Abs(b - a)) + /*", xmin: " + ((a + b) / 2) + */ ", Current amount of func calculations: " + amountoffunccomputation);
+            Console.WriteLine("Iteration: " + iterAmount + ", Current interval: (" + a + ", " + b + ")" + ", difference between previous interval: " + (previousLenght / Math.Abs(b - a)) + /*", xmin: " + ((a + b) / 2) + */ ", Current amount of func calculations: " + amountOfFuncComputation);
             n--;
-            interamount++;
-            previouslength = b - a;
+            iterAmount++;
+            previousLenght = b - a;
             if (fx1 < fx2)
             {
                 b = x2;
