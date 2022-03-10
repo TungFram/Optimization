@@ -28,9 +28,9 @@ namespace Optimization
             //Fibonnachi method
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Fibbonachi method: ");
-            FibonacciFunction fibonacciFunction = new FibonacciFunction();
-            xmin = fibonacciFunction.Min(left, right, epsilon);
-            Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + fibonacciFunction.getIterAmount() + ", amount of func calculations: " + fibonacciFunction.getAmountOfComputations());
+            FibonacciMethod fibonacciMethod = new FibonacciMethod();
+            xmin = fibonacciMethod.Min(left, right, epsilon);
+            Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + fibonacciMethod.getIterAmount() + ", amount of func calculations: " + fibonacciMethod.getAmountOfComputations());
             
             /*
             //Parabola method
@@ -43,8 +43,8 @@ namespace Optimization
             //Brent method
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("Brent Method: ");
-            BrentCombinedFunction bmethod2 = new BrentCombinedFunction();
-            xmin = bmethod2.calc(left, right, epsilon);
+            BrentCombinedMethod_Fail bmethod2 = new BrentCombinedMethod_Fail();
+            xmin = bmethod2.Min(left, right, epsilon);
             Console.WriteLine(xmin + ", yval: " + f(xmin) + ", amount of iterations: " + bmethod2.getIterAmount() + ", amount of func calculations: " + bmethod2.getAmountOfComputations());
         }
         static double f(double x)
