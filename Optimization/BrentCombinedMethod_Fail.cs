@@ -4,6 +4,7 @@ namespace Optimization
 {
     public class BrentCombinedMethod_Fail
     {
+        private readonly double _proportion = (3 - Math.Sqrt(5)) / 2;
         private readonly Function _function;
         public BrentCombinedMethod_Fail()
         {
@@ -11,90 +12,91 @@ namespace Optimization
         }
         // Полагаю, что материал взят отсюда, но это не точно:
         // https://group112.github.io/doc/sem2/2019/2019_sem2_lesson3.pdf
+        // Или отсюда:
+        // http://www.machinelearning.ru/wiki/images/4/4d/MOMO16_min1d.pdf
         // Попытался разобрать как мог, чтобы дать НОРМАЛЬНЫЕ названия, но все тщетно.
-        public double Min(double a, double b, double eps)
+        public double Min(double left, double right, double exactitude = 0.001)
         {
-            double w, v, x;
-            x = w = v = (a + b) / 2;
-            double fw, fv, fx;
-            fx = fw = fv = _function.CalculateFunction(x);
-            double d = b - a;
-            double e = b - a;
-            double K = (3 - Math.Sqrt(5)) / 2;
-            double u = 0;
+            double w, v;
+            double fw, fv;
+            var x = w = v = (left + right) / 2;
+            var fx = fw = fv = _function.CalculateFunction(x);
+            double actualStep = right - left;
+            double prevStep = actualStep;
+            double minOfParabola = 0;
             int iterAmount = 1;
-            while (Math.Abs(d) > eps)
+            while (Math.Abs(actualStep) > exactitude)
             {
                 iterAmount++;
-                Console.WriteLine($"Iteration: {iterAmount}, current interval: [{a};{b}]," +
-                                  $" x min:{(b + a) / 2}, amount of function calls: {_function.AmountFunctionCalls}");
-                double g = e;
-                e = d;
+                Console.WriteLine($"Iteration: {iterAmount}, current interval: [{left};{right}]," +
+                                  $" x min:{(right + left) / 2}, amount of function calls: {_function.AmountFunctionCalls}");
+                double g = prevStep;
+                prevStep = actualStep;
 
-                if (!(IsSame(x, w, v, eps) && IsSame(fx, fw, fv, eps)))
+                if (!(IsSame(x, w, v, exactitude) && IsSame(fx, fw, fv, exactitude)))
                 {
-                    u = ParabolaMin(x, w, v, fx, fw, fv);
+                    minOfParabola = ParabolaMin(x, w, v, fx, fw, fv);
                 }
 
-                if (a + eps <= u && b - eps >= u && Math.Abs(u - x) < 0.5 * g)
+                if (left + exactitude <= minOfParabola && right - exactitude >= minOfParabola && Math.Abs(minOfParabola - x) < 0.5 * g)
                 {
-                    d = Math.Abs(u - x);
+                    actualStep = Math.Abs(minOfParabola - x);
                 }
                 else
                 {
-                    if (x < (a + b) / 2)
+                    if (x < (left + right) / 2)
                     {
-                        u = x + K * (b - x);
-                        d = b - x;
+                        minOfParabola = x + _proportion * (right - x);
+                        actualStep = right - x;
                     }
                     else
                     {
-                        u = x - K * (x - a);
-                        d = x - a;
+                        minOfParabola = x - _proportion * (x - left);
+                        actualStep = x - left;
                     }
                 }
-                if (Math.Abs(u - x) < eps)
+                if (Math.Abs(minOfParabola - x) < exactitude)
                 {
-                    u = x + Math.Sign(u - x) * eps;
+                    minOfParabola = x + Math.Sign(minOfParabola - x) * exactitude;
                 }
-                double fu = _function.CalculateFunction(u);
+                double fu = _function.CalculateFunction(minOfParabola);
                 if (fu <= fx)
                 {
-                    if (u >= x)
+                    if (minOfParabola >= x)
                     {
-                        a = x;
+                        left = x;
                     }
                     else
                     {
-                        b = x;
+                        right = x;
                     }
                     v = w;
                     w = x;
-                    x = u;
+                    x = minOfParabola;
                     fv = fw;
                     fw = fx;
                     fx = fu;
                 }
                 else
                 {
-                    if (u >= x)
+                    if (minOfParabola >= x)
                     {
-                        b = u;
+                        right = minOfParabola;
                     }
                     else
                     {
-                        a = u;
+                        left = minOfParabola;
                     }
                     if (fu <= fw || w == x)
                     {
                         v = w;
-                        w = u;
+                        w = minOfParabola;
                         fv = fw;
                         fw = fu;
                     }
                     else if (fu <= fu || v == x || v == w)
                     {
-                        v = u;
+                        v = minOfParabola;
                         fv = fu;
                     }
                 }
