@@ -2,13 +2,13 @@
 
 namespace Optimization
 {
-    public class BrentCombinedMethod
+    public class BrentCombinedMethod2
     {
         private readonly double _proportion = (3 - Math.Sqrt(5)) / 2; // K
         private double _exactitude = 0; // tol
         public readonly Function Function;
         public int IterationCount;
-        public BrentCombinedMethod()
+        public BrentCombinedMethod2()
         {
             Function = new Function();
         }
@@ -19,6 +19,7 @@ namespace Optimization
         {
             double actualLenght = right - left; // d
             double previousLenght = actualLenght; // e
+            
             double minOfParabola = 0; // u
             double functionMinOfParabola = 0; // fu
             

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 
 namespace Optimization
-{ // Не знаю, я читал про этот метод, и мысль примерно ясна, но с реализацией я так и не разобрался, ибо толлком нигде не объясняют.
+{ // Fibonacci method:
+  // Minimum: (-1,0554305159214898;1,093603072032312), amount of iterations: 39, amount of function calls: 42
+
     public class FibonacciMethod
     {
         public readonly Function Function;
@@ -32,17 +34,16 @@ namespace Optimization
             
             while(n > 2)
             {
-                Console.WriteLine($"[Fibonacci] Iteration: {IterationCount}, current interval: [{left},{right}]," +
+                Console.WriteLine($"[Fibonacci] Iteration: {IterationCount}, current interval: [ {left} ; {right} ]," +
                                   $" x min:{(right + left) / 2}, amount of function calls: {Function.AmountFunctionCalls}");
                 n--;
                 IterationCount++;
-                previousLenght = right - left;
                 if (functionLeftBorder < functionRightBorder) // Если слева меньше, сдвигаемся влево.
                 {
                     right = rightBorder;
                     rightBorder = leftBorder;
                     functionRightBorder = functionLeftBorder;
-                    leftBorder = left + ((double)_fibonacciSequence[n - 2] / _fibonacciSequence[n]) * previousLenght;
+                    leftBorder = left + (right - rightBorder);
                     functionLeftBorder = Function.CalculateFunction(leftBorder);
                 }
                 else // Если справа меньше, соответственно, сдвигаем границы вправо.
@@ -50,7 +51,7 @@ namespace Optimization
                     left = leftBorder;
                     leftBorder = rightBorder;
                     functionLeftBorder = functionRightBorder;
-                    rightBorder = left + ((double)_fibonacciSequence[n - 1] / _fibonacciSequence[n]) * previousLenght;
+                    rightBorder = right - (leftBorder - left);
                     functionRightBorder = Function.CalculateFunction(rightBorder);
                 }
                     

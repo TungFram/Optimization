@@ -12,8 +12,9 @@ namespace Optimization
         }
 
         public double CalculateFunction(double x)
-        { // Your function.
+        {
             AmountFunctionCalls++;
+            // Ваша функция. Помните : функции Sin и т.п. по умолчанию работают с радианами, используйте DegreesToRadians.
             return Math.Exp(Math.Sin(DegreesToRadians(x))) * Math.Pow(x, 2);
         }
         
