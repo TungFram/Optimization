@@ -2,12 +2,12 @@
 
 namespace Optimization
 {
-    public class CombinedBrentMethod_wiki
+    public class CombinedBrentMethodWiki_Fail
     {
         // Алгоритм взят отсюда:
         // https://en.wikipedia.org/wiki/Brent%27s_method
         private readonly Function _function;
-        public CombinedBrentMethod_wiki()
+        public CombinedBrentMethodWiki_Fail()
         {
             _function = new Function();
         }
@@ -22,9 +22,9 @@ namespace Optimization
                 (right, left) = (left, right);
 
             double help = left;
-            double prevHelp = 0;
+            // double prevHelp = 0;
             double root = 0;
-            bool flag = true;
+            // bool flag = true;
 
             while (true)
             {
@@ -45,15 +45,14 @@ namespace Optimization
                 {
                     root = right - functionRightBorder * (right - left) / (functionRightBorder - functionLeftBorder);
                 }
-                
-                if (root < ((3 * left + right) / 4) || root > right ||
+
+                return null;
+                /*if (root < ((3 * left + right) / 4) || root > right ||
                     (flag && Math.Abs(root - right) >= Math.Abs(right - help) / 2) ||
                     (!flag && Math.Abs(root - right) >= Math.Abs(help - prevHelp) / 2) ||
-                    (flag && )
+                    (flag && Какая в жопу δ?! Откуда эта δ вообще взялась?)*/
             }
         }
-
-
 
     }
 }

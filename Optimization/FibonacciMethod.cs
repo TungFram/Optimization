@@ -5,12 +5,12 @@ namespace Optimization
 { // Не знаю, я читал про этот метод, и мысль примерно ясна, но с реализацией я так и не разобрался, ибо толлком нигде не объясняют.
     public class FibonacciMethod
     {
-        private readonly Function _function;
-        private int _iterCount;
+        public readonly Function Function;
+        public int IterationCount;
         private readonly List<int>_fibonacciSequence = new List<int>{1, 1};
         public FibonacciMethod()
         {
-            _function = new Function();
+            Function = new Function();
         }
         
         public PointAndValue Min(double left, double right, double exactitude = 0.001)
@@ -27,15 +27,15 @@ namespace Optimization
             int n = _fibonacciSequence.Count - 1;
             double leftBorder  = left + ((double)_fibonacciSequence[n - 2] / _fibonacciSequence[n] * previousLenght);
             double rightBorder = left + ((double)_fibonacciSequence[n - 1] / _fibonacciSequence[n] * previousLenght);
-            double functionLeftBorder  = _function.CalculateFunction(leftBorder);
-            double functionRightBorder = _function.CalculateFunction(rightBorder);
+            double functionLeftBorder  = Function.CalculateFunction(leftBorder);
+            double functionRightBorder = Function.CalculateFunction(rightBorder);
             
             while(n > 2)
             {
-                Console.WriteLine($"Iteration: {_iterCount}, current interval: [{left},{right}]," +
-                                  $" x min:{(right + left) / 2}, amount of function calls: {_function.AmountFunctionCalls}");
+                Console.WriteLine($"[Fibonacci] Iteration: {IterationCount}, current interval: [{left},{right}]," +
+                                  $" x min:{(right + left) / 2}, amount of function calls: {Function.AmountFunctionCalls}");
                 n--;
-                _iterCount++;
+                IterationCount++;
                 previousLenght = right - left;
                 if (functionLeftBorder < functionRightBorder) // Если слева меньше, сдвигаемся влево.
                 {
@@ -43,7 +43,7 @@ namespace Optimization
                     rightBorder = leftBorder;
                     functionRightBorder = functionLeftBorder;
                     leftBorder = left + ((double)_fibonacciSequence[n - 2] / _fibonacciSequence[n]) * previousLenght;
-                    functionLeftBorder = _function.CalculateFunction(leftBorder);
+                    functionLeftBorder = Function.CalculateFunction(leftBorder);
                 }
                 else // Если справа меньше, соответственно, сдвигаем границы вправо.
                 {
@@ -51,13 +51,13 @@ namespace Optimization
                     leftBorder = rightBorder;
                     functionLeftBorder = functionRightBorder;
                     rightBorder = left + ((double)_fibonacciSequence[n - 1] / _fibonacciSequence[n]) * previousLenght;
-                    functionRightBorder = _function.CalculateFunction(rightBorder);
+                    functionRightBorder = Function.CalculateFunction(rightBorder);
                 }
                     
             }
             
             var finalPoint = (left + right) / 2;
-            return new PointAndValue(finalPoint, _function.CalculateFunction(finalPoint));
+            return new PointAndValue(finalPoint, Function.CalculateFunction(finalPoint));
         }
     }
 }

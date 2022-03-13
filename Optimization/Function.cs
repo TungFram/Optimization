@@ -14,7 +14,12 @@ namespace Optimization
         public double CalculateFunction(double x)
         { // Your function.
             AmountFunctionCalls++;
-            return Math.Exp(Math.Sin(x)) * Math.Pow(x, 2);
+            return Math.Exp(Math.Sin(DegreesToRadians(x))) * Math.Pow(x, 2);
+        }
+        
+        private static double DegreesToRadians(double angle)
+        {
+            return (Math.PI / 180) * angle;
         }
     }
 }
