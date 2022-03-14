@@ -109,9 +109,6 @@ namespace Optimization
                     min = minOfParabola;
                 }
             }
-            
-
-            
         }
 
         private static PointAndValue ParabolaVertex(double x1, double y1, double x2, double y2, double x3, double y3)
@@ -127,7 +124,7 @@ namespace Optimization
             return new PointAndValue(-b / (2 * a), c - b * b / (4 * a));
         }
         
-        private static bool Equals(double first, double second, double third, double exactitude = 0.001)
+        private static bool Equals(double first, double second, double third, double exactitude = 0.000001)
         { 
             return Math.Abs(first - second) < exactitude &&
                    Math.Abs(first - third)  < exactitude &&

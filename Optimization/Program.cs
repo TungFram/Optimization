@@ -24,13 +24,9 @@ namespace Optimization
             var fibonacciMethod = new FibonacciMethod();
             var fibonacciMin = fibonacciMethod.Min(left, right, epsilon);
             
-            /*
             //Parabola method
-            Console.WriteLine("-------------------------------------------------");
-            Console.WriteLine("Parabola method: ");
-            ParabolaMethod pmethod = new ParabolaMethod();
-            xmin = pmethod.calc(left, right, epsilon);
-            Console.WriteLine(xmin + ", yval: " + f(xmin));*/
+            ParabolaMethod parabolaMethod = new ParabolaMethod();
+            var parabolaMin = parabolaMethod.Min(left, right, epsilon);
             
             //Brent method
             var brentCombinedMethod1 = new BrentCombinedMethod1();
@@ -52,6 +48,11 @@ namespace Optimization
             Console.WriteLine("Fibonacci method:");
             Console.WriteLine($"Minimum: ( {fibonacciMin.Point} ; {fibonacciMin.Value} ), amount of iterations: {fibonacciMethod.IterationCount}," +
                               $" amount of function calls: {fibonacciMethod.Function.AmountFunctionCalls}");
+            Space();
+            
+            Console.WriteLine("Parabola method:");
+            Console.WriteLine($"Minimum: ( {parabolaMin.Point} ; {parabolaMin.Value} ), amount of iterations: {parabolaMethod.IterationCount}," +
+                              $" amount of function calls: {parabolaMethod.Function.AmountFunctionCalls}");
             Space();
             
             Console.WriteLine("Brent Method, way 1:");
