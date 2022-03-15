@@ -47,17 +47,18 @@ namespace Optimization
 
                     leftBorder = left + interval / (_proportion + 1);
                     functionLeftBorder = Function.CalculateFunction(rightBorder);
-                    continue;
                 }
+                else
+                {
+                    // Если функция от правой границы окрестности больше, отсекаем часть от окрестности до исходной правой границы.
+                    left = leftBorder;
+                    leftBorder = rightBorder;
+                    functionLeftBorder = functionRightBorder;
+                    interval = Math.Abs(right - left);
 
-                // Если функция от правой границы окрестности больше, отсекаем часть от окрестности до исходной правой границы.
-                left = leftBorder;
-                leftBorder = rightBorder;
-                functionLeftBorder = functionRightBorder;
-                interval = Math.Abs(right - left);
-
-                rightBorder = right - interval / (_proportion + 1);
-                functionRightBorder = Function.CalculateFunction(rightBorder);
+                    rightBorder = right - interval / (_proportion + 1);
+                    functionRightBorder = Function.CalculateFunction(rightBorder);
+                }
             }
         }
     }

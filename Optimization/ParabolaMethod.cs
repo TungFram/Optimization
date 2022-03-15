@@ -79,10 +79,13 @@ namespace Optimization
                     }
                 }
 
-                curMin = ParabolaVertex(left, functionLeft,
+                var helpMin = ParabolaVertex(left, functionLeft,
                     middle, functionMiddle,
                     right, functionRight).Point;
-                
+                if (double.IsNaN(helpMin))
+                    continue;
+
+                curMin = helpMin;
                 functionMin = Function.CalculateFunction(curMin);
             }
             

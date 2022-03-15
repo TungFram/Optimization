@@ -7,9 +7,9 @@ namespace Optimization
         static void Main(string[] args)
         {
             //init vals
-            double epsilon = 0.0000001;
-            double left = -10;
-            double right = 10;
+            double epsilon = 0.000001;
+            double left  = 5;
+            double right = 20;
 
             //Dichotomy method
              var dichotomyMethod = new DichotomyMethod();
@@ -34,8 +34,9 @@ namespace Optimization
             
             var brentCombinedMethod2 = new BrentCombinedMethod1();
             var brent2Min = brentCombinedMethod2.Min(left, right, epsilon);
-            
-            Console.WriteLine("Dichotomy method:");
+
+            Space();
+            Console.WriteLine("\n\nDichotomy method:");
             Console.WriteLine($"Minimum: ( {dichotomyMin.Point} ; {dichotomyMin.Value} ), amount of iterations: {dichotomyMethod.IterationCount}," +
                               $" amount of function calls: {dichotomyMethod.Function.AmountFunctionCalls}");
             Space();
