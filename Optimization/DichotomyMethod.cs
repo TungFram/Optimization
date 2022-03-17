@@ -12,8 +12,7 @@ namespace Optimization
             Function = new Function();
         }
         
-        // [-1,0000005E-06;9,999995E-07], x min:-5,000000000138018E-13
-        // [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH", MessageId = "type: System.String")]
+        [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH", MessageId = "type: System.String")]
         public PointAndValue Min(double left, double right, double exactitude = 0.001)
         {
             IterationCount = 0;

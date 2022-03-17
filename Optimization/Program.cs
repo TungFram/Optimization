@@ -8,8 +8,8 @@ namespace Optimization
         {
             //init vals
             double epsilon = 0.000001;
-            double left  = 5;
-            double right = 20;
+            double left  = -10;
+            double right = 10;
 
             //Dichotomy method
              var dichotomyMethod = new DichotomyMethod();
@@ -32,7 +32,7 @@ namespace Optimization
             var brentCombinedMethod1 = new BrentCombinedMethod1();
             var brent1Min = brentCombinedMethod1.Min(left, right, epsilon);
             
-            var brentCombinedMethod2 = new BrentCombinedMethod1();
+            var brentCombinedMethod2 = new BrentCombinedMethod2();
             var brent2Min = brentCombinedMethod2.Min(left, right, epsilon);
 
             Space();

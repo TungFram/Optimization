@@ -15,7 +15,7 @@ namespace Optimization
         {
             AmountFunctionCalls++;
             // Ваша функция. Помните : функции Sin и т.п. по умолчанию работают с радианами, используйте DegreesToRadians.
-            return Math.Sin(DegreesToRadians(x)) - Math.Log(Math.Pow(x, 2)) - 1;
+            return Math.Exp(Math.Sin(DegreesToRadians(x))) * Math.Pow(x, 2);
         }
         
         private static double DegreesToRadians(double angle)
