@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Optimization
 { // Fibonacci method:
-  // Minimum: (-1,0554305159214898;1,093603072032312), amount of iterations: 39, amount of function calls: 42
 
     public class FibonacciMethod
     {
@@ -54,7 +53,6 @@ namespace Optimization
                     rightBorder = right - (leftBorder - left);
                     functionRightBorder = Function.CalculateFunction(rightBorder);
                 }
-                    
             }
             
             var finalPoint = (left + right) / 2;

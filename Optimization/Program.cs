@@ -34,6 +34,9 @@ namespace Optimization
             
             var brentCombinedMethod2 = new BrentCombinedMethod2();
             var brent2Min = brentCombinedMethod2.Min(left, right, epsilon);
+            
+            var brentCombinedMethod3 = new BrentCombinedMethod3();
+            var brent3Min = brentCombinedMethod3.Min(left, right, epsilon);
 
             Space();
             Console.WriteLine("\n\nDichotomy method:");
@@ -62,6 +65,9 @@ namespace Optimization
             Console.WriteLine("Brent Method, way 2:");
             Console.WriteLine($"Minimum: ( {brent2Min.Point} ; {brent2Min.Value} ), amount of iterations: {brentCombinedMethod2.IterationCount}," +
                               $" amount of function calls: {brentCombinedMethod2.Function.AmountFunctionCalls}");
+            Console.WriteLine("Brent Method, way 3, main:");
+            Console.WriteLine($"Minimum: ( {brent3Min.Point} ; {brent3Min.Value} ), amount of iterations: {brentCombinedMethod3.IterationCount}," +
+                              $" amount of function calls: {brentCombinedMethod3.Function.AmountFunctionCalls}");
         }
 
         private static void Space()
