@@ -35,8 +35,9 @@ namespace Optimization
             while (Math.Abs(actualLenght) > exactitude)
             {
                 IterationCount++;
-                Console.WriteLine($"[Brent2] Iteration: {IterationCount}, current interval: [{left};{right}]," +
+                Console.WriteLine($"[Brent] Iteration: {IterationCount}, current interval: [{left};{right}]," +
                                   $" x min:{(right + left) / 2}, amount of function calls: {Function.AmountFunctionCalls}");
+                Program.swOutput.WriteLine($"{IterationCount};\"[ {left} ; {right} ]\";{(left + right) / 2};{Function.AmountFunctionCalls}");
                 double g = previousLenght; // ?
                 previousLenght = actualLenght;
                 _exactitude = exactitude * Math.Abs(min) + exactitude / 10; // ?

@@ -45,6 +45,7 @@ namespace Optimization
                 Console.WriteLine(
                     $"Iteration: {IterationCount}, Current interval: ({left}:{right})," +
                     $" x min: {curMin}, current amount of func calls: {Function.AmountFunctionCalls}");
+                Program.swOutput.WriteLine($"{IterationCount};\"[ {left} ; {right} ]\";{(left + right) / 2};{Function.AmountFunctionCalls}");
                 
                 prevMin = curMin;
 

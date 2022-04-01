@@ -16,6 +16,10 @@ namespace Optimization
         public PointAndValue Min(double left, double right, double exactitude = 0.001)
         {
             IterationCount = 0;
+            double d = 0;
+            double p;
+            double q;
+            double r;
             var min = left + _proportion * (right - left);
             var secondFromBelow = min;
             var prevSecondFromBelow = secondFromBelow;
@@ -25,8 +29,9 @@ namespace Optimization
             var functionPrevSecondFromBelow = functionSecondFromBelow;
             while (true)
             {
-                System.Console.WriteLine($"[Brent3] Iteration: {IterationCount}, current interval: [{left};{right}], " +
+                System.Console.WriteLine($"[Brent] Iteration: {IterationCount}, current interval: [{left};{right}], " +
                                          $"x min:{(right + left) / 2}, Amount of function calls: {Function.AmountFunctionCalls}");
+                Program.swOutput.WriteLine($"{IterationCount};\"[ {left} ; {right} ]\";{(left + right) / 2};{Function.AmountFunctionCalls}");
                 var middle = (left + right) / 2;
                 var tol = exactitude * Math.Abs(min) + exactitude;
                 //
@@ -40,10 +45,9 @@ namespace Optimization
                 //
                 // Fit a parabola.
                 //
-                var r = 0.0;
-                var q = r;
-                var p = q;
-                double d = 0;
+                r = 0.0;
+                q = r;
+                p = q;
                 if (tol < Math.Abs(e))
                 {
                     r = (min - secondFromBelow) * (functionMin - functionPrevSecondFromBelow);

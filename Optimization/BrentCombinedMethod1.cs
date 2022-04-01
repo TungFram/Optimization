@@ -30,8 +30,9 @@ namespace Optimization
             while (true)
             {
                 IterationCount++;
-                Console.WriteLine($"[Brent1] Iteration: {IterationCount}, current interval: [{left};{right}]," +
+                Console.WriteLine($"[Brent] Iteration: {IterationCount}, current interval: [{left};{right}]," +
                                   $" x min:{(right + left) / 2}, amount of function calls: {Function.AmountFunctionCalls}");
+                Program.swOutput.WriteLine($"{IterationCount};\"[ {left} ; {right} ]\";{(left + right) / 2};{Function.AmountFunctionCalls}");
                 
                 if (Math.Max(
                     Math.Abs(min - left),

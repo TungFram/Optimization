@@ -22,6 +22,7 @@ namespace Optimization
                 IterationCount++;
                 Console.WriteLine($"[Dichotomy] Iteration: {IterationCount}, current interval: [ {left} ; {right} ]," +
                                   $" x min:{(left + right) / 2}, amount of function calls: {Function.AmountFunctionCalls}");
+                Program.swOutput.WriteLine($"{IterationCount};\"[ {left} ; {right} ]\";{(left + right) / 2};{Function.AmountFunctionCalls}");
                 
                 double middle = (left + right) / 2;
 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wolka\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj": {}
+    "C:\\Users\\tsydenovPC\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wolka\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj": {
+    "C:\\Users\\tsydenovPC\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wolka\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj",
+        "projectUniqueName": "C:\\Users\\tsydenovPC\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj",
         "projectName": "Optimization",
-        "projectPath": "C:\\Users\\wolka\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj",
-        "packagesPath": "C:\\Users\\wolka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wolka\\RiderProjects\\Optimization\\Optimization\\obj\\",
+        "projectPath": "C:\\Users\\tsydenovPC\\RiderProjects\\Optimization\\Optimization\\Optimization.csproj",
+        "packagesPath": "C:\\Users\\tsydenovPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tsydenovPC\\RiderProjects\\Optimization\\Optimization\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\wolka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tsydenovPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

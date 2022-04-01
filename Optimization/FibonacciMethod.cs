@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Optimization
 { // Fibonacci method:
+  // Minimum: (-1,0554305159214898;1,093603072032312), amount of iterations: 39, amount of function calls: 42
 
     public class FibonacciMethod
     {
@@ -35,6 +36,7 @@ namespace Optimization
             {
                 Console.WriteLine($"[Fibonacci] Iteration: {IterationCount}, current interval: [ {left} ; {right} ]," +
                                   $" x min:{(right + left) / 2}, amount of function calls: {Function.AmountFunctionCalls}");
+                Program.swOutput.WriteLine($"{IterationCount};\"[ {left} ; {right} ]\";{(left + right) / 2};{Function.AmountFunctionCalls}");
                 n--;
                 IterationCount++;
                 if (functionLeftBorder < functionRightBorder) // Если слева меньше, сдвигаемся влево.
@@ -53,6 +55,7 @@ namespace Optimization
                     rightBorder = right - (leftBorder - left);
                     functionRightBorder = Function.CalculateFunction(rightBorder);
                 }
+                    
             }
             
             var finalPoint = (left + right) / 2;

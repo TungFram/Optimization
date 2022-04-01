@@ -1,12 +1,16 @@
 ﻿using System;
+using System.IO;
 
 namespace Optimization
 {
     class Program
     {
+        public static FileStream fileOutput = File.Open("output.csv", FileMode.Create);
+        public static StreamWriter swOutput = new StreamWriter(fileOutput);
         static void Main(string[] args)
         {
-            //init vals
+            swOutput.WriteLine("Iteration;Interval;x min;Amount of function calls");
+           //init vals
             double epsilon = 0.000001;
             double left  = -10;
             double right = 10;
@@ -68,6 +72,8 @@ namespace Optimization
             Console.WriteLine("Brent Method, way 3, main:");
             Console.WriteLine($"Minimum: ( {brent3Min.Point} ; {brent3Min.Value} ), amount of iterations: {brentCombinedMethod3.IterationCount}," +
                               $" amount of function calls: {brentCombinedMethod3.Function.AmountFunctionCalls}");
+            swOutput.Close();
+            fileOutput.Close();
         }
 
         private static void Space()
